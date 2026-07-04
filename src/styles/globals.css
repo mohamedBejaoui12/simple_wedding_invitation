@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette — monochromatic cream/ivory/brown like the reference card */
+  --color-ivory: #f0ebe0;
+  --color-warm-white: #f5f1e8;
+  --color-card-bg: #ede8dc;
+  --color-card-edge: #e2dbc8;
+  --color-brown-dark: #3a2a1a;
+  --color-brown-gold: #7a6548;
+  --color-gold-soft: #a08a64;
+  --color-beige: #ddd5c2;
+  --color-cream: #f1e9d8;
+  --color-bg-outer: #9a948c;
+
+  --font-display: "Amiri", "Scheherazade New", serif;
+  --font-kufi: "Reem Kufi", "Cairo", sans-serif;
+  --font-body: "Noto Naskh Arabic", "Lateef", serif;
+  --font-script: "Amiri", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg-outer);
+  color: var(--color-brown-dark);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-gold-soft);
+  color: var(--color-warm-white);
+}
+
+/* Focus visibility for keyboard users */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-brown-gold);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

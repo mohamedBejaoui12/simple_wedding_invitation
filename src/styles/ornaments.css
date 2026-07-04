@@ -1,0 +1,32 @@
+/* No busy geometric tiling — just subtle radial warmth on the gray background */
+.arabesque-field {
+  background: var(--color-bg-outer);
+}
+
+/* Ornament divider — simple horizontal dashes like the reference */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  color: var(--color-brown-dark);
+  padding: 0.5rem 0;
+}
+
+.ornament-divider .line {
+  height: 2px;
+  width: 20px;
+  background: var(--color-brown-dark);
+  opacity: 0.5;
+  border-radius: 1px;
+}
+
+/* Hide the star SVG in the divider */
+.ornament-divider svg {
+  display: none;
+}
+
+.gold-hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(120, 100, 70, 0.3), transparent);
+}
