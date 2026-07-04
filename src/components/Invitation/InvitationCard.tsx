@@ -16,10 +16,17 @@ export function InvitationCard() {
   return (
     <motion.main
       className="paper-card relative rounded-[3px] px-6 py-12 sm:px-10 sm:py-16 md:px-14 md:py-20"
-      initial={reduced ? undefined : { opacity: 0, rotateX: 90, scale: 0.9 }}
-      animate={reduced ? undefined : { opacity: 1, rotateX: 0, scale: 1 }}
-      transition={{ duration: 2.0, ease: [0.22, 1, 0.36, 1] }}
-      style={{ minHeight: '85vh', display: 'flex', flexDirection: 'column', transformPerspective: 2000, transformOrigin: 'top center' }}
+      initial={reduced ? undefined : { opacity: 0, rotateX: -15, y: 40, scale: 0.96 }}
+      animate={reduced ? undefined : { opacity: 1, rotateX: 0, y: 0, scale: 1 }}
+      transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+      style={{ 
+        minHeight: '85vh', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        transformStyle: 'preserve-3d', 
+        transformOrigin: 'top center',
+        backfaceVisibility: 'hidden'
+      }}
     >
       <Border />
       <BackgroundPattern />
