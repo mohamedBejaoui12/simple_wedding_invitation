@@ -11,14 +11,12 @@ interface RevealProps {
 }
 
 /**
- * Slow scale + opacity reveal, used for the border draw-in and ornament
- * bloom moments where a fade alone would feel too flat.
+ * Fast, simultaneous scale reveal to make it lighter.
  */
 export function Reveal({
   children,
-  delay = 0,
-  duration = 1.8,
-  scaleFrom = 0.94,
+  duration = 0.6,
+  scaleFrom = 0.96,
   className,
 }: RevealProps) {
   const reduced = useReducedMotion();
@@ -32,8 +30,8 @@ export function Reveal({
       className={className}
       initial={{ opacity: 0, scale: scaleFrom }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration, delay: 0, ease: "easeOut" }}
     >
       {children}
     </motion.div>

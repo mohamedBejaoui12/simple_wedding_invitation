@@ -35,11 +35,8 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
-}
-
-::selection {
-  background: var(--color-gold-soft);
-  color: var(--color-warm-white);
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Focus visibility for keyboard users */

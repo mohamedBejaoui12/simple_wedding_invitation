@@ -12,14 +12,12 @@ interface FadeInProps {
 }
 
 /**
- * Gentle, slow upward fade used throughout the invitation's reveal sequence.
- * Respects prefers-reduced-motion by rendering content immediately, in place.
+ * Fast, simultaneous fade-in animation to make it lighter.
  */
 export function FadeIn({
   children,
-  delay = 0,
-  duration = 1.4,
-  y = 22,
+  duration = 0.6,
+  y = 10,
   className,
   as = "div",
 }: FadeInProps) {
@@ -30,14 +28,14 @@ export function FadeIn({
     const Tag = as;
     return <Tag className={className}>{children}</Tag>;
   }
-
+  
   return (
     <MotionTag
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.4 }}
-      transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration, delay: 0, ease: "easeOut" }}
     >
       {children}
     </MotionTag>

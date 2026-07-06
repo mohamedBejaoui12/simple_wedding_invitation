@@ -9,11 +9,11 @@ export function CoupleNames() {
       <Reveal delay={1.6} duration={1.9} scaleFrom={0.9}>
         <EmbossEffect className="flex flex-col items-center gap-2">
           <h1 className="text-names" lang="ar" dir="rtl">
-            محمد
+            أحمد
           </h1>
           <span className="text-and mb-2 mt-2">و</span>
           <h1 className="text-names" lang="ar" dir="rtl">
-            هديل
+            مرام
           </h1>
         </EmbossEffect>
       </Reveal>

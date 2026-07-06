@@ -24,7 +24,7 @@ export function Border() {
         }}
         initial={reduced ? undefined : { opacity: 0 }}
         animate={reduced ? undefined : { opacity: 1 }}
-        transition={{ duration: 1.8, delay: 0.3, ease: "easeOut" }}
+        transition={{ duration: 0.8, delay: 0, ease: "easeOut" }}
       />
       
       {/* Inner embossed border line */}
@@ -40,7 +40,7 @@ export function Border() {
         }}
         initial={reduced ? undefined : { opacity: 0 }}
         animate={reduced ? undefined : { opacity: 1 }}
-        transition={{ duration: 1.8, delay: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.8, delay: 0, ease: "easeOut" }}
       />
 
       <OrnamentCorner position="tl" />
