@@ -1,22 +1,39 @@
 @import "tailwindcss";
 
 @theme {
-  /* Palette — monochromatic cream/ivory/brown like the reference card */
-  --color-ivory: #f0ebe0;
-  --color-warm-white: #f5f1e8;
-  --color-card-bg: #ede8dc;
-  --color-card-edge: #e2dbc8;
-  --color-brown-dark: #3a2a1a;
-  --color-brown-gold: #7a6548;
-  --color-gold-soft: #a08a64;
-  --color-beige: #ddd5c2;
-  --color-cream: #f1e9d8;
-  --color-bg-outer: #9a948c;
+  /* Luxury Palette */
+  --color-ivory:        #FDF8F2;
+  --color-ivory-dark:   #F5EDE0;
+  --color-ivory-deep:   #EDE0CE;
+  --color-gold:         #C8A96A;
+  --color-gold-light:   #DFC28A;
+  --color-gold-pale:    #E8D5A8;
+  --color-gold-dark:    #A8884A;
+  --color-gold-dim:     rgba(200, 169, 106, 0.25);
+  --color-brown-dark:   #3A2A1F;
+  --color-brown:        #5C3D28;
+  --color-brown-warm:   #7A5C3A;
+  --color-muted:        #9A8D7C;
+  --color-beige:        #EEDFCB;
+  --color-beige-light:  #F5EDE0;
+  --color-bg-outer:     #D6C9B5;
 
+  /* Legacy aliases (keep existing code working) */
+  --color-warm-white:   #FDF8F2;
+  --color-card-bg:      #F5EDE0;
+  --color-card-edge:    #EDE0CE;
+  --color-brown-dark:   #3A2A1F;
+  --color-brown-gold:   #C8A96A;
+  --color-gold-soft:    #C8A96A;
+  --color-cream:        #FDF8F2;
+  --color-bg-outer:     #D6C9B5;
+
+  /* Fonts */
   --font-display: "Amiri", "Scheherazade New", serif;
-  --font-kufi: "Reem Kufi", "Cairo", sans-serif;
-  --font-body: "Noto Naskh Arabic", "Lateef", serif;
-  --font-script: "Amiri", serif;
+  --font-kufi:    "Reem Kufi", "Cairo", sans-serif;
+  --font-body:    "Noto Naskh Arabic", "Lateef", serif;
+  --font-script:  "Amiri", serif;
+  --font-english: "Cormorant Garamond", "EB Garamond", "Georgia", serif;
 }
 
 * {
@@ -29,7 +46,11 @@ html {
 
 body {
   margin: 0;
-  background: var(--color-bg-outer);
+  background-image: url('../images/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--color-brown-dark);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
@@ -37,13 +58,14 @@ body {
   overflow-x: hidden;
   user-select: none;
   -webkit-user-select: none;
+  min-height: 100vh;
 }
 
 /* Focus visibility for keyboard users */
 a:focus-visible,
 button:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--color-brown-gold);
+  outline: 2px solid var(--color-gold);
   outline-offset: 4px;
   border-radius: 2px;
 }

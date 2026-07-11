@@ -1,93 +1,110 @@
-/* The outer page — gray background like the reference photo */
+/* ================================================================
+   LUXURY PAPER CARD — premium ivory with gold foil feel
+   ================================================================ */
+
+/* Outer page background */
 .paper-grain {
   position: relative;
-  background-color: var(--color-bg-outer);
-  background-image: url('../images/bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   min-height: 100vh;
 }
 
-/* The invitation card — thick embossed ivory cardstock with deckle edges and subtle letter creases */
+/* The main invitation card */
 .paper-card {
-  background: 
-    /* Subtle tri-fold letter creases */
-    linear-gradient(to bottom, rgba(255,255,255,0) 32.9%, rgba(0,0,0,0.04) 33%, rgba(255,255,255,0.4) 33.2%, rgba(255,255,255,0) 33.4%),
-    linear-gradient(to bottom, rgba(255,255,255,0) 66.2%, rgba(0,0,0,0.04) 66.3%, rgba(255,255,255,0.4) 66.5%, rgba(255,255,255,0) 66.7%),
-    /* Base paper gradient */
+  background:
+    /* Very subtle horizontal grain */
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0) 0px,
+      rgba(255,255,255,0.03) 1px,
+      rgba(255,255,255,0) 2px,
+      rgba(255,255,255,0) 40px
+    ),
+    /* Soft top-light paper gradient */
     linear-gradient(
-      175deg,
-      #f2ede3 0%,
-      #ede8dc 30%,
-      #e9e3d5 60%,
-      #ede7da 100%
+      168deg,
+      #FDFAF5 0%,
+      #F8F2E8 20%,
+      #F4EDE0 50%,
+      #F7F0E5 80%,
+      #FAF5EC 100%
     );
   position: relative;
-  border-radius: 3px;
-  
-  /* Embossed card shadow — sits above the gray background */
+  border-radius: 4px;
+
+  /* Rich layered shadow — paper lifted off surface */
   box-shadow:
-    /* Inner highlight (top bevel) */
-    inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    inset 0 -1px 0 rgba(90, 57, 33, 0.05),
-    /* Card lift shadow */
-    0 2px 4px rgba(0, 0, 0, 0.08),
-    0 8px 24px rgba(0, 0, 0, 0.12),
-    0 20px 50px rgba(0, 0, 0, 0.10),
-    /* Subtle warm spread */
-    0 0 0 1px rgba(200, 188, 165, 0.4);
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1px 0 rgba(160, 130, 90, 0.08),
+    0 2px 8px rgba(80, 55, 30, 0.10),
+    0 12px 32px rgba(80, 55, 30, 0.15),
+    0 32px 72px rgba(80, 55, 30, 0.12),
+    0 0 0 1px rgba(200, 169, 106, 0.30),
+    0 0 0 2px rgba(200, 169, 106, 0.10);
 }
 
-/* Deckle / rough paper edge effect */
+/* Outer deckle-edge glow behind the card */
 .paper-card::before {
   content: "";
   position: absolute;
-  inset: -3px;
-  border-radius: 4px;
-  background: linear-gradient(
-    175deg,
-    #eae4d6 0%,
-    #e2dbc8 50%,
-    #ddd5c0 100%
-  );
+  inset: -4px;
+  border-radius: 6px;
+  background: linear-gradient(168deg, #EFE8D6 0%, #E5D8C2 100%);
   z-index: -1;
   box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.1),
-    0 4px 12px rgba(0, 0, 0, 0.08);
+    0 2px 4px rgba(0,0,0,0.08),
+    0 8px 24px rgba(0,0,0,0.10);
 }
 
-/* Subtle inner frame shadow to give embossed/recessed feel */
+/* Inner shadow for depth */
 .paper-card::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  border-radius: 3px;
+  border-radius: 4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.12) 0%,
+    rgba(255,255,255,0) 30%,
+    rgba(180,150,110,0.03) 80%,
+    rgba(180,150,110,0.06) 100%
+  );
   box-shadow:
-    inset 0 0 0 1px rgba(180, 165, 135, 0.25),
-    inset 0 3px 12px rgba(90, 57, 33, 0.06),
-    inset 0 -3px 12px rgba(90, 57, 33, 0.04);
+    inset 0 0 0 1px rgba(200, 169, 106, 0.18),
+    inset 0 4px 18px rgba(200, 169, 106, 0.06),
+    inset 0 -4px 18px rgba(120, 90, 50, 0.05);
 }
 
-/* Embossed / engraved text and ornament effect — strong for that raised look */
+/* Gold emboss effect for ornaments */
 .emboss {
   filter:
-    drop-shadow(0 1px 0 rgba(255, 253, 248, 0.95))
-    drop-shadow(0 -1px 1px rgba(90, 57, 33, 0.2));
+    drop-shadow(0 1px 0 rgba(255, 253, 245, 0.95))
+    drop-shadow(0 -1px 1px rgba(120, 90, 50, 0.20));
 }
 
 .emboss-text {
   text-shadow:
-    0 1px 1px rgba(255, 255, 255, 0.95),
-    0 -1px 2px rgba(60, 40, 20, 0.25),
-    0 2px 4px rgba(0, 0, 0, 0.15);
+    0 1px 2px rgba(255, 255, 255, 0.90),
+    0 -1px 2px rgba(80, 55, 30, 0.15),
+    0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.engraved-panel {
-  background: linear-gradient(180deg, rgba(90, 57, 33, 0.04), rgba(255, 253, 248, 0.5));
-  box-shadow:
-    inset 0 2px 6px rgba(90, 57, 33, 0.14),
-    inset 0 -1px 0 rgba(255, 253, 248, 0.8);
-  border-radius: 2px;
+/* Shimmer keyframe for gold accents */
+@keyframes shimmer-gold {
+  0%, 100% { opacity: 0.7; filter: brightness(1); }
+  50%       { opacity: 1;   filter: brightness(1.15); }
+}
+
+.shimmer-gold {
+  animation: shimmer-gold 4s ease-in-out infinite;
+}
+
+/* Gentle float for floral corners */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-4px) rotate(0.5deg); }
+}
+
+.float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
 }

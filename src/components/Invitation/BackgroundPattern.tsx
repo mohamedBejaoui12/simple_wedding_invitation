@@ -1,102 +1,69 @@
 /**
- * A large embossed floral/arabesque medallion centered behind the card,
- * emulating the ornate raised pattern visible in the reference card.
- * Uses very subtle opacity to appear as a pressed/embossed paper texture.
+ * Luxury background — subtle Islamic arabesque watermark + radial warmth.
  */
 export function BackgroundPattern() {
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      {/* Central large medallion */}
-      <svg
-        viewBox="0 0 600 800"
-        className="absolute left-1/2 top-1/2 h-[100%] w-[90%] -translate-x-1/2 -translate-y-1/2"
+    <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[4px]" aria-hidden="true">
+      {/* Radial warmth center glow */}
+      <div
         style={{
-          color: 'rgba(200, 185, 155, 0.35)',
-          filter: 'drop-shadow(0 1px 0 rgba(255,252,245,0.6)) drop-shadow(0 -0.5px 0.5px rgba(140,120,90,0.12))',
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(ellipse 70% 60% at 50% 42%, rgba(200,169,106,0.07) 0%, transparent 70%)',
+        }}
+      />
+
+      {/* Central medallion watermark */}
+      <svg
+        viewBox="0 0 400 500"
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '85%',
+          height: '85%',
+          color: 'rgba(200, 169, 106, 0.09)',
+          pointerEvents: 'none',
         }}
       >
         <defs>
-          {/* Floral/scroll repeat motif */}
-          <pattern id="floralPattern" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
-            {/* Central rosette */}
-            <circle cx="60" cy="60" r="28" fill="none" stroke="currentColor" strokeWidth="0.8" opacity="0.4" />
-            <circle cx="60" cy="60" r="18" fill="none" stroke="currentColor" strokeWidth="0.6" opacity="0.3" />
-            <circle cx="60" cy="60" r="8" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.35" />
-            
-            {/* 8-point star inside rosette */}
-            <polygon 
-              points="60,35 65,50 80,50 68,59 73,75 60,65 47,75 52,59 40,50 55,50" 
-              fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.25"
-            />
-            
-            {/* Curling vine elements */}
-            <path d="M60 32 C 75 20, 95 25, 100 45" fill="none" stroke="currentColor" strokeWidth="0.6" opacity="0.3" />
-            <path d="M60 32 C 45 20, 25 25, 20 45" fill="none" stroke="currentColor" strokeWidth="0.6" opacity="0.3" />
-            <path d="M60 88 C 75 100, 95 95, 100 75" fill="none" stroke="currentColor" strokeWidth="0.6" opacity="0.3" />
-            <path d="M60 88 C 45 100, 25 95, 20 75" fill="none" stroke="currentColor" strokeWidth="0.6" opacity="0.3" />
-            
-            {/* Small leaf accents */}
-            <path d="M88 60 C 95 50, 105 55, 100 65" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.2" />
-            <path d="M32 60 C 25 50, 15 55, 20 65" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.2" />
-            
-            {/* Corner dots */}
-            <circle cx="0" cy="0" r="2" fill="currentColor" opacity="0.15" />
-            <circle cx="120" cy="0" r="2" fill="currentColor" opacity="0.15" />
-            <circle cx="0" cy="120" r="2" fill="currentColor" opacity="0.15" />
-            <circle cx="120" cy="120" r="2" fill="currentColor" opacity="0.15" />
+          <pattern id="arabPattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+            {/* Central 8-petal rosette */}
+            <circle cx="40" cy="40" r="22" fill="none" stroke="currentColor" strokeWidth="0.6" opacity="0.5" />
+            <circle cx="40" cy="40" r="14" fill="none" stroke="currentColor" strokeWidth="0.4" opacity="0.35" />
+            <circle cx="40" cy="40" r="6"  fill="none" stroke="currentColor" strokeWidth="0.4" opacity="0.4" />
+            {/* 8-point star */}
+            <path d="M40 20 L43 33 L55 28 L46 38 L58 43 L45 44 L48 57 L40 48 L32 57 L35 44 L22 43 L34 38 L25 28 L37 33 Z"
+              fill="none" stroke="currentColor" strokeWidth="0.4" opacity="0.3" />
+            {/* Corner connections */}
+            <path d="M40 18 C48 10, 72 10, 80 18" fill="none" stroke="currentColor" strokeWidth="0.4" opacity="0.25" />
+            <path d="M40 18 C32 10, 8 10, 0 18" fill="none" stroke="currentColor" strokeWidth="0.4" opacity="0.25" />
+            <path d="M40 62 C48 70, 72 70, 80 62" fill="none" stroke="currentColor" strokeWidth="0.4" opacity="0.25" />
+            <path d="M40 62 C32 70, 8 70, 0 62" fill="none" stroke="currentColor" strokeWidth="0.4" opacity="0.25" />
           </pattern>
         </defs>
-
-        {/* Main embossed pattern field */}
-        <rect x="40" y="60" width="520" height="680" rx="4" fill="url(#floralPattern)" />
-        
-        {/* Central large medallion overlay */}
-        <g transform="translate(300, 420)" fill="none" stroke="currentColor">
-          <circle r="160" strokeWidth="1" opacity="0.2" />
-          <circle r="140" strokeWidth="0.8" opacity="0.15" />
-          <circle r="120" strokeWidth="0.6" opacity="0.12" />
-          <circle r="80" strokeWidth="0.5" opacity="0.1" />
-          
-          {/* 8-point star medallion */}
-          <polygon 
-            points="0,-130 35,-55 110,-75 60,-20 110,35 35,20 0,100 -35,20 -110,35 -60,-20 -110,-75 -35,-55" 
-            strokeWidth="0.7" opacity="0.12"
+        {/* Pattern fill */}
+        <rect x="0" y="0" width="400" height="500" fill="url(#arabPattern)" />
+        {/* Large central medallion overlay */}
+        <g transform="translate(200, 250)" fill="none" stroke="currentColor">
+          <circle r="140" strokeWidth="0.8" opacity="0.4" />
+          <circle r="115" strokeWidth="0.5" opacity="0.28" />
+          <circle r="88"  strokeWidth="0.4" opacity="0.22" />
+          <circle r="55"  strokeWidth="0.3" opacity="0.18" />
+          {/* 12-point star */}
+          <path
+            d="M0,-110 L14,-48 L55,-88 L22,-32 L88,0 L22,32 L55,88 L14,48 L0,110 L-14,48 L-55,88 L-22,32 L-88,0 L-22,-32 L-55,-88 L-14,-48 Z"
+            strokeWidth="0.5" opacity="0.22"
           />
         </g>
       </svg>
 
-      {/* Top floral border accent — denser near edges like the reference */}
-      <svg
-        viewBox="0 0 400 60"
-        className="absolute top-6 left-1/2 -translate-x-1/2 w-[80%]"
-        style={{ color: 'rgba(190, 175, 145, 0.3)' }}
-        preserveAspectRatio="xMidYMid meet"
-      >
-        <g fill="none" stroke="currentColor" strokeWidth="0.7">
-          <path d="M50 30 C 80 10, 120 10, 150 30 C 180 50, 220 50, 250 30 C 280 10, 320 10, 350 30" opacity="0.4" />
-          <path d="M30 30 C 60 5, 100 5, 130 30 C 160 55, 200 55, 230 30 C 260 5, 300 5, 330 30 C 360 55, 380 40, 370 30" opacity="0.25" />
-          {/* Small leaf clusters */}
-          <path d="M100 20 C 105 10, 115 12, 112 22" opacity="0.3" />
-          <path d="M200 40 C 205 48, 215 46, 210 38" opacity="0.3" />
-          <path d="M300 20 C 295 10, 285 12, 288 22" opacity="0.3" />
-        </g>
-      </svg>
-
-      {/* Bottom floral border accent */}
-      <svg
-        viewBox="0 0 400 60"
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[80%]"
-        style={{ color: 'rgba(190, 175, 145, 0.3)', transform: 'translateX(-50%) scaleY(-1)' }}
-        preserveAspectRatio="xMidYMid meet"
-      >
-        <g fill="none" stroke="currentColor" strokeWidth="0.7">
-          <path d="M50 30 C 80 10, 120 10, 150 30 C 180 50, 220 50, 250 30 C 280 10, 320 10, 350 30" opacity="0.4" />
-          <path d="M30 30 C 60 5, 100 5, 130 30 C 160 55, 200 55, 230 30 C 260 5, 300 5, 330 30 C 360 55, 380 40, 370 30" opacity="0.25" />
-          <path d="M100 20 C 105 10, 115 12, 112 22" opacity="0.3" />
-          <path d="M200 40 C 205 48, 215 46, 210 38" opacity="0.3" />
-          <path d="M300 20 C 295 10, 285 12, 288 22" opacity="0.3" />
-        </g>
-      </svg>
+      {/* Soft top edge fade */}
+      <div style={{
+        position: 'absolute', inset: '18px 18px auto 18px', height: '40px',
+        background: 'linear-gradient(to bottom, rgba(255,255,255,0.08), transparent)',
+      }} />
     </div>
   );
 }

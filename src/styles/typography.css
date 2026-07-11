@@ -1,97 +1,92 @@
-/* Basmala — large, bold, elegant at the very top */
+/* Basmala — large, bold, premium gold calligraphy */
 .text-basmala {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2rem, 6vw, 3.2rem);
-  line-height: 1.6;
+  font-size: clamp(2.4rem, 7vw, 3.5rem);
+  line-height: 1.7;
   color: var(--color-brown-dark);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  text-shadow:
+    0 1px 2px rgba(255, 255, 255, 0.85),
+    0 -1px 1px rgba(80, 55, 30, 0.12);
 }
 
-/* Quranic verse — bold, prominent calligraphy */
+/* Quranic verse — elegant calligraphy */
 .text-verse {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.4rem, 3vw, 1.8rem);
-  line-height: 2.4;
+  font-size: clamp(1.25rem, 2.8vw, 1.65rem);
+  line-height: 2.5;
   color: var(--color-brown-dark);
+  text-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.7),
+    0 -1px 1px rgba(80, 55, 30, 0.08);
 }
 
-/* English translation — italic, smaller, muted brown */
+/* English translation — italic, serif, muted */
 .text-verse-translation {
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: var(--font-english);
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(0.7rem, 1.4vw, 0.82rem);
-  line-height: 1.85;
-  letter-spacing: 0.015em;
-  color: var(--color-brown-dark);
-  opacity: 0.7;
+  font-size: clamp(0.72rem, 1.5vw, 0.88rem);
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  color: var(--color-muted);
 }
 
-/* Invitation lead text */
-.text-invite-lead {
-  font-family: var(--font-kufi);
-  font-weight: 500;
-  font-size: clamp(1rem, 2.4vw, 1.35rem);
-  line-height: 2;
-  color: var(--color-brown-gold);
-}
-
-/* Couple names — large bold display */
+/* Couple names — beautiful large calligraphy */
 .text-names {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2.8rem, 9vw, 5.5rem);
-  line-height: 1.25;
+  font-size: clamp(3.2rem, 10vw, 6rem);
+  line-height: 1.15;
   color: var(--color-brown-dark);
+  text-shadow:
+    0 2px 4px rgba(255, 255, 255, 0.80),
+    0 -1px 2px rgba(80, 55, 30, 0.18),
+    0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .text-and {
   font-family: var(--font-kufi);
   font-weight: 400;
-  font-size: clamp(1rem, 2.2vw, 1.35rem);
-  color: var(--color-brown-gold);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--color-gold);
+  letter-spacing: 0.05em;
 }
 
-/* Blessing text — medium calligraphic */
-.text-blessing {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: clamp(1.1rem, 2.8vw, 1.55rem);
+/* Dua — medium calligraphic */
+.text-dua {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 3.2vw, 1.85rem);
   line-height: 2.1;
   color: var(--color-brown-dark);
 }
 
-.text-eyebrow {
-  font-family: var(--font-kufi);
-  font-weight: 500;
-  font-size: clamp(0.8rem, 1.6vw, 0.95rem);
-  letter-spacing: 0.08em;
-  color: var(--color-brown-gold);
-}
-
-.text-detail {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: clamp(0.95rem, 2.1vw, 1.2rem);
-  color: var(--color-brown-dark);
-}
-
-/* Closing dua — bold, prominent calligraphy */
-.text-dua {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  line-height: 2;
-  color: var(--color-brown-dark);
-}
-
-/* Closing Quranic calligraphy at the very bottom */
+/* Closing verse */
 .text-closing-verse {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
-  line-height: 1.6;
+  font-size: clamp(1.2rem, 3vw, 1.7rem);
+  line-height: 1.7;
+  color: var(--color-brown-warm);
+}
+
+/* Eyebrow / label */
+.text-eyebrow {
+  font-family: var(--font-english);
+  font-weight: 500;
+  font-size: clamp(0.65rem, 1.2vw, 0.78rem);
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+/* Detail text */
+.text-detail {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
   color: var(--color-brown-dark);
 }

@@ -3,50 +3,52 @@ import { useReducedMotion } from "../../hooks/useReducedMotion";
 import { OrnamentCorner } from "./OrnamentCorner";
 
 /**
- * Embossed border frame matching the reference card — a subtle recessed
- * rectangular frame with ornate floral corner pieces.
+ * Ornate Islamic double-border frame with gold embossed effect.
+ * Outer border + inner border + arabesque corners.
  */
 export function Border() {
   const reduced = useReducedMotion();
 
   return (
-    <div className="pointer-events-none absolute inset-0">
-      {/* Outer embossed border line */}
+    <div className="pointer-events-none absolute inset-0 rounded-[4px]" aria-hidden="true">
+      {/* Outer gold border */}
+      <motion.div
+        className="absolute rounded-[3px]"
+        style={{
+          inset: '10px',
+          boxShadow: `
+            inset 0 0 0 1px rgba(200, 169, 106, 0.70),
+            inset 0 0 0 2px rgba(200, 169, 106, 0.15),
+            0 1px 0 rgba(255, 252, 245, 0.90),
+            0 -1px 0 rgba(140, 110, 70, 0.10)
+          `,
+          background: 'linear-gradient(to bottom right, rgba(200,169,106,0.05), transparent 50%, rgba(200,169,106,0.03))',
+        }}
+        initial={reduced ? undefined : { opacity: 0 }}
+        animate={reduced ? undefined : { opacity: 1 }}
+        transition={{ duration: 1.0, ease: "easeOut" }}
+      />
+
+      {/* Inner thin border */}
       <motion.div
         className="absolute rounded-[2px]"
         style={{
-          inset: '12px',
+          inset: '18px',
           boxShadow: `
-            inset 0 0 0 3px rgba(165, 145, 110, 0.65),
-            inset 0 2px 4px rgba(100, 80, 50, 0.3),
-            0 2px 1px rgba(255, 252, 245, 0.8)
+            inset 0 0 0 0.75px rgba(200, 169, 106, 0.45),
+            0 1px 0 rgba(255, 253, 248, 0.70)
           `,
         }}
         initial={reduced ? undefined : { opacity: 0 }}
         animate={reduced ? undefined : { opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0, ease: "easeOut" }}
-      />
-      
-      {/* Inner embossed border line */}
-      <motion.div
-        className="absolute rounded-[1px]"
-        style={{
-          inset: '20px',
-          boxShadow: `
-            inset 0 0 0 1.5px rgba(165, 145, 110, 0.5),
-            inset 0 1px 2px rgba(100, 80, 50, 0.2),
-            0 1px 1px rgba(255, 252, 245, 0.7)
-          `,
-        }}
-        initial={reduced ? undefined : { opacity: 0 }}
-        animate={reduced ? undefined : { opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0, ease: "easeOut" }}
+        transition={{ duration: 1.0, delay: 0.15, ease: "easeOut" }}
       />
 
-      <OrnamentCorner position="tl" />
-      <OrnamentCorner position="tr" />
-      <OrnamentCorner position="bl" />
-      <OrnamentCorner position="br" />
+      {/* Corner ornaments */}
+      <OrnamentCorner position="tl" size={140} />
+      <OrnamentCorner position="tr" size={140} />
+      <OrnamentCorner position="bl" size={140} />
+      <OrnamentCorner position="br" size={140} />
     </div>
   );
 }

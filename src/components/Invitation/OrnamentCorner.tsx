@@ -1,141 +1,100 @@
+import type { CSSProperties } from "react";
+
+/**
+ * Ornate Islamic corner ornament — arabesque floral motif in champagne gold.
+ */
 interface OrnamentCornerProps {
   position: "tl" | "tr" | "bl" | "br";
+  size?: number;
 }
 
 const rotation: Record<OrnamentCornerProps["position"], string> = {
   tl: "rotate(0deg)",
   tr: "rotate(90deg)",
   br: "rotate(180deg)",
-  bl: "rotate(-90deg)",
+  bl: "rotate(270deg)",
 };
 
-const placement: Record<OrnamentCornerProps["position"], React.CSSProperties> = {
-  tl: { top: '8px', left: '8px' },
-  tr: { top: '8px', right: '8px' },
-  br: { bottom: '8px', right: '8px' },
-  bl: { bottom: '8px', left: '8px' },
+const placement: Record<OrnamentCornerProps["position"], CSSProperties> = {
+  tl: { top: '6px', left: '6px' },
+  tr: { top: '6px', right: '6px' },
+  br: { bottom: '6px', right: '6px' },
+  bl: { bottom: '6px', left: '6px' },
 };
 
-/**
- * Elaborate floral corner ornament matching the reference card's embossed
- * corner pieces — lush curling acanthus leaves and vines.
- */
-export function OrnamentCorner({ position }: OrnamentCornerProps) {
+export function OrnamentCorner({ position, size = 160 }: OrnamentCornerProps) {
   return (
     <svg
-      viewBox="0 0 180 180"
+      viewBox="0 0 160 160"
       style={{
         position: 'absolute',
         ...placement[position],
         transform: rotation[position],
-        width: '180px',
-        height: '180px',
-        color: 'rgba(165, 145, 110, 0.7)',
-        filter: 'drop-shadow(0 2px 1px rgba(255,252,245,0.8)) drop-shadow(0 -1px 1px rgba(100,80,50,0.3))',
+        width: `${size}px`,
+        height: `${size}px`,
         pointerEvents: 'none',
+        overflow: 'visible',
       }}
       aria-hidden="true"
       focusable="false"
     >
-      {/* Main corner vine sweep */}
-      <path
-        d="M8 8 C 8 45, 8 80, 8 120"
-        stroke="currentColor"
-        strokeWidth="3.2"
-        opacity="0.9"
+      <defs>
+        <linearGradient id={`cornerGold-${position}`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#DFC28A" />
+          <stop offset="50%" stopColor="#C8A96A" />
+          <stop offset="100%" stopColor="#A8884A" />
+        </linearGradient>
+        <filter id={`emboss-${position}`}>
+          <feDropShadow dx="0" dy="1" stdDeviation="0.5" floodColor="#FFF9F0" floodOpacity="0.8" />
+          <feDropShadow dx="0" dy="-0.5" stdDeviation="0.5" floodColor="#6B4C2A" floodOpacity="0.2" />
+        </filter>
+      </defs>
+      <g
+        stroke={`url(#cornerGold-${position})`}
         fill="none"
-      />
-      <path
-        d="M8 8 C 45 8, 80 8, 120 8"
-        stroke="currentColor"
-        strokeWidth="3.2"
-        opacity="0.9"
-        fill="none"
-      />
+        filter={`url(#emboss-${position})`}
+        strokeLinecap="round"
+      >
+        {/* Main border lines */}
+        <path d="M8 8 L8 110" strokeWidth="2.5" opacity="0.85" />
+        <path d="M8 8 L110 8" strokeWidth="2.5" opacity="0.85" />
 
-      {/* Acanthus leaf cluster — top left corner */}
-      <path
-        d="M10 10 C 35 10, 42 18, 42 30 C 42 44, 30 48, 22 44 C 14 40, 10 32, 10 22"
-        stroke="currentColor"
-        strokeWidth="2.4"
-        opacity="0.8"
-        fill="none"
-      />
-      <path
-        d="M15 12 C 30 14, 35 22, 34 30 C 33 36, 26 38, 22 35"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        opacity="0.6"
-        fill="none"
-      />
+        {/* Inner border lines */}
+        <path d="M16 16 L16 90" strokeWidth="1" opacity="0.5" />
+        <path d="M16 16 L90 16" strokeWidth="1" opacity="0.5" />
 
-      {/* Second leaf — curling down */}
-      <path
-        d="M22 44 C 30 55, 28 70, 18 75 C 10 78, 6 70, 8 60"
-        stroke="currentColor"
-        strokeWidth="2.0"
-        opacity="0.75"
-        fill="none"
-      />
-      
-      {/* Leaf veins */}
-      <path
-        d="M18 48 C 22 56, 22 64, 16 68"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        opacity="0.5"
-        fill="none"
-      />
+        {/* Corner jewel */}
+        <circle cx="8" cy="8" r="5.5" strokeWidth="1.5" fill={`url(#cornerGold-${position})`} opacity="0.9" />
+        <circle cx="8" cy="8" r="2.5" fill="#FDF8F2" opacity="0.7" />
 
-      {/* Third leaf — curling right */}
-      <path
-        d="M42 30 C 55 28, 68 35, 70 48 C 72 58, 64 62, 56 58"
-        stroke="currentColor"
-        strokeWidth="2.0"
-        opacity="0.75"
-        fill="none"
-      />
+        {/* Arabesque corner flourish */}
+        <path d="M22 8 C 30 8, 36 14, 36 22 C 36 30, 42 36, 50 34 C 42 46, 30 40, 22 32 C 14 24, 16 14, 22 8 Z"
+          strokeWidth="1.2" opacity="0.75" fill={`url(#cornerGold-${position})`} fillOpacity="0.08" />
 
-      {/* Small bud elements */}
-      <circle cx="10" cy="10" r="5" fill="currentColor" opacity="0.6" />
-      <circle cx="30" cy="30" r="3.5" fill="currentColor" opacity="0.5" />
-      <circle cx="50" cy="50" r="2.5" fill="currentColor" opacity="0.4" />
-      
-      {/* Delicate scroll along the top edge */}
-      <path
-        d="M55 10 C 62 18, 72 18, 78 12 C 84 6, 94 8, 98 16"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        opacity="0.6"
-        fill="none"
-      />
-      <path
-        d="M98 16 C 102 24, 112 22, 116 14"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        opacity="0.5"
-        fill="none"
-      />
+        {/* Curling vine along top */}
+        <path d="M40 10 C 55 5, 70 5, 80 10 C 90 15, 100 12, 108 8"
+          strokeWidth="1" opacity="0.55" />
+        <path d="M60 9 C 65 3, 73 3, 75 8" strokeWidth="0.8" opacity="0.4" />
 
-      {/* Delicate scroll along the left edge */}
-      <path
-        d="M10 55 C 18 62, 18 72, 12 78 C 6 84, 8 94, 16 98"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        opacity="0.6"
-        fill="none"
-      />
-      <path
-        d="M16 98 C 24 102, 22 112, 14 116"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        opacity="0.5"
-        fill="none"
-      />
+        {/* Curling vine along left */}
+        <path d="M10 40 C 5 55, 5 70, 10 80 C 15 90, 12 100, 8 108"
+          strokeWidth="1" opacity="0.55" />
+        <path d="M9 60 C 3 65, 3 73, 8 75" strokeWidth="0.8" opacity="0.4" />
 
-      {/* Tiny flower accents */}
-      <circle cx="78" cy="12" r="3" fill="currentColor" opacity="0.4" />
-      <circle cx="12" cy="78" r="3" fill="currentColor" opacity="0.4" />
+        {/* Small leaf buds top */}
+        <ellipse cx="60" cy="7" rx="5" ry="3" strokeWidth="0.7" opacity="0.45" transform="rotate(20 60 7)" />
+        <ellipse cx="80" cy="7" rx="4" ry="2.5" strokeWidth="0.7" opacity="0.35" transform="rotate(-15 80 7)" />
+
+        {/* Small leaf buds left */}
+        <ellipse cx="7" cy="60" rx="3" ry="5" strokeWidth="0.7" opacity="0.45" transform="rotate(20 7 60)" />
+        <ellipse cx="7" cy="80" rx="2.5" ry="4" strokeWidth="0.7" opacity="0.35" transform="rotate(-15 7 80)" />
+
+        {/* Geometric accent dots */}
+        <circle cx="40" cy="8" r="1.8" fill={`url(#cornerGold-${position})`} strokeWidth="0" opacity="0.7" />
+        <circle cx="8" cy="40" r="1.8" fill={`url(#cornerGold-${position})`} strokeWidth="0" opacity="0.7" />
+        <circle cx="108" cy="8" r="1.5" fill={`url(#cornerGold-${position})`} strokeWidth="0" opacity="0.5" />
+        <circle cx="8" cy="108" r="1.5" fill={`url(#cornerGold-${position})`} strokeWidth="0" opacity="0.5" />
+      </g>
     </svg>
   );
 }
