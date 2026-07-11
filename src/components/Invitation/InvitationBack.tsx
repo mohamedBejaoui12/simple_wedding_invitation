@@ -125,9 +125,7 @@ export function InvitationBack() {
             href="https://maps.google.com/?q=36.85670670361167,10.158111749449692"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            onPointerDown={(e) => e.stopPropagation()}
-            onTouchStart={(e) => e.stopPropagation()}
+
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -171,9 +169,7 @@ export function InvitationBack() {
             href="https://maps.google.com/?q=36.85670670361167,10.158111749449692"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            onPointerDown={(e) => e.stopPropagation()}
-            onTouchStart={(e) => e.stopPropagation()}
+
             style={{
               display: 'block',
               width: '100%',
@@ -219,9 +215,7 @@ export function InvitationBack() {
             href="https://maps.google.com/?q=36.85670670361167,10.158111749449692"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            onPointerDown={(e) => e.stopPropagation()}
-            onTouchStart={(e) => e.stopPropagation()}
+
             style={{
               display: 'inline-flex',
               alignItems: 'center',

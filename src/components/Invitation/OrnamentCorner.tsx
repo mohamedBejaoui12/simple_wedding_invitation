@@ -34,6 +34,7 @@ export function OrnamentCorner({ position, size = 160 }: OrnamentCornerProps) {
         height: `${size}px`,
         pointerEvents: 'none',
         overflow: 'visible',
+        filter: 'drop-shadow(0 1px 0.5px rgba(255,249,240,0.8)) drop-shadow(0 -0.5px 0.5px rgba(107,76,42,0.2))',
       }}
       aria-hidden="true"
       focusable="false"
@@ -44,15 +45,11 @@ export function OrnamentCorner({ position, size = 160 }: OrnamentCornerProps) {
           <stop offset="50%" stopColor="#C8A96A" />
           <stop offset="100%" stopColor="#A8884A" />
         </linearGradient>
-        <filter id={`emboss-${position}`}>
-          <feDropShadow dx="0" dy="1" stdDeviation="0.5" floodColor="#FFF9F0" floodOpacity="0.8" />
-          <feDropShadow dx="0" dy="-0.5" stdDeviation="0.5" floodColor="#6B4C2A" floodOpacity="0.2" />
-        </filter>
       </defs>
       <g
         stroke={`url(#cornerGold-${position})`}
         fill="none"
-        filter={`url(#emboss-${position})`}
+
         strokeLinecap="round"
       >
         {/* Main border lines */}

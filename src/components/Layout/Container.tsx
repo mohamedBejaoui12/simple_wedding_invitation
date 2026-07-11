@@ -7,7 +7,6 @@ export function Container({ children }: { children: ReactNode }) {
         className="w-full flex flex-col justify-center"
         style={{
           maxWidth: '620px',
-          perspective: '2000px',
         }}
       >
         {children}

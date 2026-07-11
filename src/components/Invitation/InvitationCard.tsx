@@ -48,8 +48,32 @@ export function InvitationCard() {
 
   return (
     <>
-      {/* Responsive styles for flip button */}
+      {/* Responsive styles for flip button + mobile Safari 3D fixes */}
       <style>{`
+        /* ── Mobile Safari backface-visibility fix ── */
+        .card-face {
+          grid-area: 1 / 1;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          -webkit-transform-style: flat;
+          transform-style: flat;
+          will-change: transform;
+        }
+        .card-face--front {
+          transform: translateZ(1px);
+          -webkit-transform: translateZ(1px);
+          z-index: 2;
+        }
+        .card-face--back {
+          transform: rotateY(180deg) translateZ(1px);
+          -webkit-transform: rotateY(180deg) translateZ(1px);
+          z-index: 1;
+        }
+        .card-flipper {
+          -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+        }
+
         .flip-button {
           display: inline-flex;
           align-items: center;
@@ -74,37 +98,17 @@ export function InvitationCard() {
           -webkit-appearance: none;
           -webkit-tap-highlight-color: transparent;
           z-index: 9999;
+          position: relative;
         }
 
-        /* Large screens: fixed at bottom of viewport */
-        @media (min-width: 769px) {
-          .flip-button {
-            position: fixed;
-            bottom: clamp(20px, 4vh, 40px);
-            left: 50%;
-            transform: translateX(-50%);
-          }
-          .flip-button:hover {
-            transform: translateX(-50%) translateY(-3px);
-          }
-          .flip-button-flow {
-            display: none;
-          }
+        .flip-button:hover {
+          transform: translateY(-3px);
         }
 
-        /* Small screens: inline below the card */
-        @media (max-width: 768px) {
-          .flip-button-fixed {
-            display: none;
-          }
-          .flip-button-flow {
-            display: flex;
-            justify-content: center;
-            padding: 24px 0 16px;
-          }
-          .flip-button {
-            position: relative;
-          }
+        .flip-button-flow {
+          display: flex;
+          justify-content: center;
+          padding: 24px 0 16px;
         }
       `}</style>
 
@@ -112,15 +116,11 @@ export function InvitationCard() {
         className="relative w-full"
         style={{ perspective: '2200px' }}
       >
-        {/* Fixed button for large screens */}
-        <div className="flip-button-fixed">
-          {flipButton}
-        </div>
 
         <motion.div
+          className="card-flipper"
           style={{
             display: 'grid',
-            transformStyle: 'preserve-3d',
             transformOrigin: 'center center',
           }}
           initial={reduced ? undefined : { opacity: 0, y: 20 }}
@@ -136,11 +136,23 @@ export function InvitationCard() {
           }}
         >
           {/* Front */}
-          <div style={{ gridArea: '1 / 1', backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
+          <div 
+            className="card-face card-face--front"
+            style={{
+              pointerEvents: isFlipped ? 'none' : 'auto',
+              zIndex: isFlipped ? 1 : 2
+            }}
+          >
             <InvitationFront />
           </div>
           {/* Back */}
-          <div style={{ gridArea: '1 / 1', backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
+          <div 
+            className="card-face card-face--back"
+            style={{
+              pointerEvents: isFlipped ? 'auto' : 'none',
+              zIndex: isFlipped ? 2 : 1
+            }}
+          >
             <InvitationBack />
           </div>
         </motion.div>
@@ -153,3 +165,4 @@ export function InvitationCard() {
     </>
   );
 }
+
