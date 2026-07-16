@@ -54,7 +54,7 @@ export function CoupleNames() {
       <Reveal duration={0.7} scaleFrom={0.95}>
         <div className="flex flex-col items-center" style={{ position: 'relative', zIndex: 1, gap: '4px' }}>
           <h1 className="text-names emboss-text" lang="ar" dir="rtl">
-            أحمد
+            علي
           </h1>
           {/* Gold "and" separator */}
           <div className="flex items-center gap-4" style={{ margin: '4px 0' }}>
@@ -69,7 +69,7 @@ export function CoupleNames() {
             }} />
           </div>
           <h1 className="text-names emboss-text" lang="ar" dir="rtl">
-            مرام
+            هبة
           </h1>
         </div>
       </Reveal>
